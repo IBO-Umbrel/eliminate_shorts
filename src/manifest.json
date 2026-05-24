@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Eliminate Shorts",
+  "description": "Aggressively removes YouTube Shorts and short-form recommendations.",
+  "version": "1.0.0",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Eliminate Shorts"
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": [
+        "utils/debounce.js",
+        "utils/storage.js",
+        "content/stats.js",
+        "content/detector.js",
+        "content/remover.js",
+        "content/redirector.js",
+        "content/mutationObserver.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

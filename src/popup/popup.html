@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliminate Shorts</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header card">
+        <div>
+          <h1>🚫 Shorts</h1>
+          <p>Remove short-form distractions</p>
+        </div>
+        <span id="statusBadge" class="badge">ACTIVE</span>
+      </header>
+
+      <section class="card">
+        <label class="row" for="enabledToggle">
+          <span>Enable No Shorts</span>
+          <input id="enabledToggle" type="checkbox" class="toggle" />
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Settings</h2>
+
+        <label class="row" for="redirectShortsUrls">
+          <span>Redirect Shorts URLs</span>
+          <input id="redirectShortsUrls" type="checkbox" class="toggle" />
+        </label>
+        <label class="row" for="redirectTarget">
+          <span>Redirect Target</span>
+          <select id="redirectTarget" class="select">
+            <option value="home">Home</option>
+            <option value="subscriptions">Subscriptions</option>
+          </select>
+        </label>
+
+        <label class="row" for="hideUnderDuration">
+          <span>Hide Videos Under Duration</span>
+          <input id="hideUnderDuration" type="checkbox" class="toggle" />
+        </label>
+
+        <div id="durationGroup" class="duration-group hidden">
+          <label for="maxDurationSeconds">Threshold: <strong id="durationValue">60s</strong></label>
+          <input id="maxDurationSeconds" type="range" min="15" max="90" step="15" />
+          <div class="ticks">
+            <span>15s</span><span>30s</span><span>45s</span><span>60s</span><span>90s</span>
+          </div>
+        </div>
+
+        <label class="row" for="removeNotifications">
+          <span>Remove Shorts Notifications</span>
+          <input id="removeNotifications" type="checkbox" class="toggle" />
+        </label>
+
+        <label class="row" for="aggressiveCleanup">
+          <span>Aggressive Cleanup Mode</span>
+          <input id="aggressiveCleanup" type="checkbox" class="toggle" />
+        </label>
+      </section>
+
+      <section class="card stats">
+        <h2>Statistics</h2>
+        <p>Removed today: <strong id="removedToday">0</strong></p>
+        <p>Current page removals: <strong id="currentPageRemovals">0</strong></p>
+      </section>
+
+      <footer class="footer">
+        <p>Focus on long-form content.</p>
+        <small>v1.0.0</small>
+      </footer>
+    </main>
+    <script src="../utils/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
